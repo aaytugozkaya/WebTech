@@ -18,11 +18,12 @@ namespace WP.Controllers
 
         public async Task<IActionResult> ChoosenProduct (int id)
         {
-            List<Product> choosen = new List<Product>();
+            //List<Product> choosen = new List<Product>();
+            Product choosen = new Product();
             var hhtc = new HttpClient();
             var response = await hhtc.GetAsync("https://localhost:7295/api/ProductApi/"+id);
             string resString = await response.Content.ReadAsStringAsync();
-            choosen = JsonConvert.DeserializeObject<List<Product>>(resString);
+            choosen = JsonConvert.DeserializeObject<Product>(resString);
             return View(choosen);
         }
     }

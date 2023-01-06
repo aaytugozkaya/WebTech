@@ -1,62 +1,60 @@
 ﻿@model WP.Models.CategoriesProducts
 @inject ILanguageService language
 
-
 <div class=" mt-5">
-    <div class="row" style="width:100%;">
-        <div class="col-lg-2 mt-5"style="padding-left:4rem">
-            <div class="card mt-3" style="width:14rem;border-radius:15px;">
-                <div class="card-body">
-                    <h4 style="color:black;">Categories</h4>
-                    <hr style="background-color:#fed700;margin-top:1em;" />
-                    
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <a asp-controller="Home" asp-action="Index" style="width:150px;" class="btn btn-primary mx-2">All Products</a>
-                            <hr />
-                        </div>
+<div class="row" style="width:100%;">
+    <div class="col-lg-3 mt-5" style="padding-left:6rem">
+        <div class="card mt-3" style="width:24rem;border-radius:15px;">
+            <div class="card-body">
+                <h4 style="color:black;"><center>Categories</center></h4>
+                <hr style="margin-top:1em;" />
+                <div class="row">
+                    <div class="col-lg-12">
+                        <center><a asp-controller="Home" asp-action="Index" style="width:250px;background-color:#004088;color:white" class="btn  mx-2">All Products</a></center>
+                        <hr />
                     </div>
-                    @{
-                        foreach (var item in Model.categories)
-                        {
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <a asp-controller="Home" asp-action="FilteredProducts" style="width:150px;" asp-route-id="@item.CategoryId" class="btn btn-primary mx-2">@item.CategoryName</a>
-                                    <hr />
-                                </div>
-                            </div>
-                        }
-                    }
                 </div>
+                @{
+                    foreach (var item in Model.categories)
+                    {
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <center><a asp-controller="Home" asp-action="FilteredProducts" asp-route-id="@item.CategoryId" style="width:250px;background-color:#004088;color:white" class="btn  mx-2">@item.CategoryName</a></center>
+                                <hr />
+                            </div>
+                        </div>
+                    }
+                }
             </div>
         </div>
-        <div class="col-lg-10" style="padding-left:40px;">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="row">
+    </div>
+    <div class="col-lg-9" style="padding-left:20px;padding-right:2rem">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="row">
 
-                        <div class="col-lg-4">
-                            <h5>
-                                @ViewData["name"]
-                            </h5>
+                    <div class="col-lg-4">
+                        <h5>
+                               @ViewData["name"]
+                        </h5>
 
-                        </div>
                     </div>
-                    <hr style="background-color:#fed700" />
-                    <div class="row">
-                    
+                </div>
+                <hr style="background-color:#002855" />
+                <div class="row">
 
-                        <div class="col-lg-12 d-flex justify-content-end">
+
+                    <div class="col-lg-12 d-flex justify-content-end">
                             @using (Html.BeginForm("FilteredProducts", "Home"))
                             {
-                        
-                            <input type="submit" name="bname" value="Ascending" class="btn" style="background-color:orange;color:white;" />
+
+                            <input type="submit" name="bname" value="Ascending" class="btn" style="background-color:#0058BB;color:white;" />
                             }
 
                             @using (Html.BeginForm("FilteredProducts", "Home", new { id = ViewData["categoryid"] }))
                             {
-                        
-                            <input type="submit" name="bname" value="Descending" class="btn ml-1" style="background-color:purple;color:white;" />
+
+                            <input type="submit" name="bname" value="Descending" class="btn ml-1" style="background-color:#002855;color:white;" />
                             }
                         </div>
                         
